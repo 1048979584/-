@@ -18,7 +18,7 @@ class DataTest(unittest.TestCase):
         for i in sql_data:
             insert_sql=i['加载测试数据']
             print(insert_sql)
-            insert_result = MysqlHelper().delete(sql=insert_sql)
+            insert_result = MysqlHelper().insert(sql=insert_sql)
             if insert_result == 1:
                 print('insert测试数据成功')
             else:
