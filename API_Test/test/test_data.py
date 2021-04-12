@@ -16,13 +16,12 @@ class DataTest(unittest.TestCase):
         sql_data = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
         sql_data=sql_data.next()
         for i in sql_data:
-            insert_sql=i['加载测试数据']
-            print(insert_sql)
+            insert_sql=i['Insert_sql']
             insert_result = MysqlHelper().insert(sql=insert_sql)
             if insert_result == 1:
-                print('insert测试数据成功')
+                print('Insert Success  -->> %s'% (insert_sql))
             else:
-                print('insert测试数据失败')
+                print('Insert Fail -->> %s'% (insert_sql))
         print('### 接口测试开始 ###')
         time.sleep(1)
 
@@ -32,13 +31,12 @@ class DataTest(unittest.TestCase):
         sql_data2 = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
         sql_data2 = sql_data2.next()
         for j in sql_data2:
-            delete_sql=j['清理测试数据']
-            print(delete_sql)
+            delete_sql=j['Delete_sql']
             delete_result = MysqlHelper().delete(sql=delete_sql)
             if delete_result == 1:
-                print('delete测试数据成功')
+                print('Delete Success  -->> %s'% (delete_sql))
             else:
-                print('delete测试数据失败')
+                print('Delete Fail -->> %s'% (delete_sql))
         print('### 接口测试结束 ###')
 
     @ddt.data(*excel.next())
@@ -48,8 +46,8 @@ class DataTest(unittest.TestCase):
         url2 = data['接口地址']
         Except1 = data['状态码']
         Except2 = data['响应包含']
-        Sql = data['Sql']
-        json_path = data['JsonPath']
+        Sql = data['Sql_Assert']
+        json_path = data['JsonPath_Assert']
 
         if ReqMethod =='get':
             Req_Result = CaseScript().get_api(url=url2)

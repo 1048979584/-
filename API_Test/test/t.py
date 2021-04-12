@@ -29,12 +29,69 @@
 #         Assert_json = j.split('==')
 #         json_path_result = jsonpath(a, Assert_json[0])[0]
 #         print(json_path_result)
-
-
-# a1= jsonpath(js, '$.data.list[1].[companyCode]')
+#
+#
+# js='''{
+#     "msg":"success",
+#     "code":0,
+#     "data":{
+#
+#         "defalutCompanyType":"10",
+#         "companyList":[
+#             {
+#                 "companyCode":"C00001",
+#                 "companyName":"风策网络",
+#                 "businessType":"10",
+#                 "registSource":"40",
+#                 "invoiceBankName":"上海银行",
+#                 "companyTypeList": [
+#                     {
+#                         "companyCode":"C00001",
+#                         "companyName":"上海风策网络科技有限公司",
+#                         "companyType":"30",
+#                         "companyStatus":"40",
+#                         "platId":"P00001"
+#                     },
+#                     {
+#                         "companyCode":"C00001",
+#                         "companyName":"上海风策网络科技有限公司",
+#                         "companyType":"10",
+#                         "companyStatus":"40",
+#                         "platId":"P00001"
+#                     }]]
+# 				}
+# 			}
+# }'''
+#
+# js=json.loads(js)
+# print(type(js))
+#
+#
+#
+# a1= jsonpath(js, '$.data.companyList[0].companyTypeList[1].companyName')
 # print(a1)
-import os
+# # import os
+# # print( os.path.abspath('ApiCase.xlsx'))
+# # print( os.path.normpath('ApiCase.xlsx') )
+from API_Test.Get_TestCase.read_excel import ExcelUtil
+from API_Test.SQL.MysqlDB import MysqlHelper
 
-print( os.path.abspath('ApiCase.xlsx'))
+sql_data = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
+sql_data=sql_data.next()
+for i in sql_data:
+    insert_sql=i['Insert_sql']
+    insert_result = MysqlHelper().insert(sql=insert_sql)
+    if insert_result == 1:
+        print('Insert Success  -->> %s '%(insert_sql))
+    else:
+        print('Insert Fail -->> %s '%(insert_sql))
 
-print( os.path.normpath('ApiCase.xlsx') )
+sql_data2 = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
+sql_data2 = sql_data2.next()
+for j in sql_data2:
+            delete_sql=j['Delete_sql']
+            delete_result = MysqlHelper().delete(sql=delete_sql)
+            if delete_result == 1:
+                print('Delete Success  -->> %s'% (delete_sql))
+            else:
+                print('Delete Fail -->> %s'% (delete_sql))
