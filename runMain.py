@@ -65,11 +65,11 @@ def send_email(newfile):
 
 if __name__=='__main__':
     #1.执行测试用例，生成最新的测试用例
-    test_dir = 'G:\LocalGit\github\QiuW\API_Test\\test'
-    test_report_dir = 'G:\LocalGit\github\QiuW\API_Test\Test_Report'
+    test_dir = os.path.abspath('./test')
+    test_report_dir = os.path.abspath('./Test_Report')
     discover=unittest.defaultTestLoader.discover(test_dir, pattern='test_*.py')
     now=time.strftime('%Y-%m-%d')
-    filename = test_report_dir+'\\'+ now + 'Test_result.html'
+    filename = test_report_dir+'\\'+ now + '_Test_result.html'
     fp=open(filename ,'wb')
     runner = HTMLTestReport(stream=fp,title=u'测试报告',description=u'用例执行情况，详见附件')
     runner.run(discover)

@@ -4,7 +4,7 @@ from API_Test.Get_TestCase.read_excel import ExcelUtil
 from API_Test.SQL.MysqlDB import MysqlHelper
 from API_Test.script.api_script import CaseScript
 from jsonpath import jsonpath
-path= 'G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx'
+path=os.path.abspath('./Test_Case/ApiCase.xlsx')
 excel = ExcelUtil(path,sheetName="调试")
 @ddt.ddt
 class DataTest(unittest.TestCase):

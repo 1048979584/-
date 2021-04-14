@@ -1390,7 +1390,7 @@ class _TestResult(TestResult):
                     test.imgs.append(driver.get_screenshot_as_base64())
                 except Exception as e:
                     pass
-                
+
         if self.verbosity > 1:
             sys.stderr.write(u'F  ')
             sys.stderr.write(str(test))
@@ -1727,7 +1727,7 @@ class HTMLTestReportEN(Template_EN):
         if python3:
             sys.stderr.write('\nTime Elapsed: %s\n' % (self.stopTime - self.startTime))
         else:
-            print >>sys.stderr, u'\nTime Elapsed: %s' % (self.stopTime-self.startTime)
+            print (sys.stderr, u'\nTime Elapsed: %s' % (self.stopTime-self.startTime))
         return result
 
 

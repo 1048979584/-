@@ -1,4 +1,5 @@
 import json
+import os
 
 import xlrd
 
@@ -41,7 +42,8 @@ class ExcelUtil(object):
 
 
 if __name__ == '__main__':
-    excel = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
+    path = os.path.abspath('./Test_Case/ApiCase.xlsx')
+    excel = ExcelUtil(path, sheetName="调试")
     data = excel.next()
     print(data)
     print(data['加载测试数据'])

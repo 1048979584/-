@@ -1,12 +1,15 @@
+import os
+
 import pymysql
 from API_Test.Get_TestCase.read_excel import ExcelUtil
 
 class MysqlHelper(object):
     conn = None
     def __init__(self):
-        excel = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '数据库')
+        excel_path = os.path.abspath('./Test_Case/ApiCase.xlsx')
+        excel = ExcelUtil(excelPath=excel_path, sheetName='数据库')
         connect = excel.next()[0]
-        self.host = 'localhost'
+        self.host = connect['host']
         self.username = connect['username']
         self.password = connect['password']
         self.db = connect['db']

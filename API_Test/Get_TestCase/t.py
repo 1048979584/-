@@ -73,6 +73,10 @@
 # # import os
 # # print( os.path.abspath('ApiCase.xlsx'))
 # # print( os.path.normpath('ApiCase.xlsx') )
+import os
+
+import xlrd
+
 from API_Test.Get_TestCase.read_excel import ExcelUtil
 from API_Test.SQL.MysqlDB import MysqlHelper
 #
@@ -94,22 +98,31 @@ from API_Test.SQL.MysqlDB import MysqlHelper
 #             if delete_result == 1:
 #                 print('Delete Success  -->> %s'% (delete_sql))
 #             else:
-#                 print('Delete Fail -->> %s'% (delete_sql))
+# #                 print('Delete Fail -->> %s'% (delete_sql))
+#
+# data = ExcelUtil("C:\\Users\qiuwei\Desktop\ApiCase.xlsx", '案例汇总').next()
+# data01=data[0]
+# data02=data[1]
+# JsonPath_Val=data01['JsonPath_Val']
+# Val_dict={}
+# if len(JsonPath_Val) != 0:
+#     JsonPath_Val_List = JsonPath_Val.split('\n')
+#     for i in JsonPath_Val_List:
+#         Val_list = i.split(':')
+#         print(Val_list[0])
+#         Val_dict[Val_list[0]]=Val_list[1]
+# print(Val_dict)
+#
 
-data = ExcelUtil("C:\\Users\qiuwei\Desktop\ApiCase.xlsx", '案例汇总').next()
-data01=data[0]
-data02=data[1]
-JsonPath_Val=data01['JsonPath_Val']
-Val_dict={}
-if len(JsonPath_Val) != 0:
-    JsonPath_Val_List = JsonPath_Val.split('\n')
-    for i in JsonPath_Val_List:
-        Val_list = i.split(':')
-        print(Val_list[0])
-        Val_dict[Val_list[0]]=Val_list[1]
-print(Val_dict)
 
 
 
+path=os.path.abspath('./Test_Case/ApiCase.xlsx')
+path2=os.path.dirname('ApiCase.xlsx')
+
+
+
+
+print(path)
 
 
