@@ -30,7 +30,7 @@ class MysqlHelper(object):
             result = self.cursor.fetchone()
             self.close()
         except Exception as e:
-            print(e)
+            print('[SQL Err]', e)
             self.conn.rollback()
         return result
 
@@ -40,9 +40,11 @@ class MysqlHelper(object):
             self.connect()
             self.cursor.execute(sql, params)
             list_data = self.cursor.fetchall()
+            if len(list_data)==0:
+                list_data='NULL'
             self.close()
         except Exception as e:
-            print(e)
+            print('[SQL Err]',e)
             self.conn.rollback()
         return list_data
 
@@ -63,7 +65,7 @@ class MysqlHelper(object):
             self.conn.commit()
             self.close()
         except Exception as e:
-            print(e)
+            print('[SQL Err]', e)
             self.conn.rollback()
         return count
 if __name__ == '__main__':

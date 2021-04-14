@@ -75,23 +75,41 @@
 # # print( os.path.normpath('ApiCase.xlsx') )
 from API_Test.Get_TestCase.read_excel import ExcelUtil
 from API_Test.SQL.MysqlDB import MysqlHelper
+#
+# sql_data = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
+# sql_data=sql_data.next()
+# for i in sql_data:
+#     insert_sql=i['Insert_sql']
+#     insert_result = MysqlHelper().insert(sql=insert_sql)
+#     if insert_result == 1:
+#         print('Insert Success  -->> %s '%(insert_sql))
+#     else:
+#         print('Insert Fail -->> %s '%(insert_sql))
+#
+# sql_data2 = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
+# sql_data2 = sql_data2.next()
+# for j in sql_data2:
+#             delete_sql=j['Delete_sql']
+#             delete_result = MysqlHelper().delete(sql=delete_sql)
+#             if delete_result == 1:
+#                 print('Delete Success  -->> %s'% (delete_sql))
+#             else:
+#                 print('Delete Fail -->> %s'% (delete_sql))
 
-sql_data = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
-sql_data=sql_data.next()
-for i in sql_data:
-    insert_sql=i['Insert_sql']
-    insert_result = MysqlHelper().insert(sql=insert_sql)
-    if insert_result == 1:
-        print('Insert Success  -->> %s '%(insert_sql))
-    else:
-        print('Insert Fail -->> %s '%(insert_sql))
+data = ExcelUtil("C:\\Users\qiuwei\Desktop\ApiCase.xlsx", '案例汇总').next()
+data01=data[0]
+data02=data[1]
+JsonPath_Val=data01['JsonPath_Val']
+Val_dict={}
+if len(JsonPath_Val) != 0:
+    JsonPath_Val_List = JsonPath_Val.split('\n')
+    for i in JsonPath_Val_List:
+        Val_list = i.split(':')
+        print(Val_list[0])
+        Val_dict[Val_list[0]]=Val_list[1]
+print(Val_dict)
 
-sql_data2 = ExcelUtil("G:\LocalGit\github\QiuW\API_Test\Test_Case\ApiCase.xlsx", '初始化')
-sql_data2 = sql_data2.next()
-for j in sql_data2:
-            delete_sql=j['Delete_sql']
-            delete_result = MysqlHelper().delete(sql=delete_sql)
-            if delete_result == 1:
-                print('Delete Success  -->> %s'% (delete_sql))
-            else:
-                print('Delete Fail -->> %s'% (delete_sql))
+
+
+
+
