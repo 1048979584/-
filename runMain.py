@@ -65,8 +65,8 @@ def send_email(newfile):
 
 if __name__=='__main__':
     #1.执行测试用例，生成最新的测试用例
-    test_dir = os.path.abspath('./test')
-    test_report_dir = os.path.abspath('./Test_Report')
+    test_dir = os.path.abspath('./API_Test/test')
+    test_report_dir = os.path.abspath('./API_Test/Test_Report')
     discover=unittest.defaultTestLoader.discover(test_dir, pattern='test_*.py')
     now=time.strftime('%Y-%m-%d')
     filename = test_report_dir+'\\'+ now + '_Test_result.html'
