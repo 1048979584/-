@@ -5,14 +5,15 @@ from API_Test.SQL.MysqlDB import MysqlHelper
 from API_Test.script.api_script import CaseScript
 from jsonpath import jsonpath
 path=os.path.abspath('./Test_Case/ApiCase.xlsx')
-excel = ExcelUtil(path,sheetName="调试")
+execute_sheet_name = ExcelUtil(path, sheetName="execute").next()[0]['execute_sheet']
+excel = ExcelUtil(path,sheetName=execute_sheet_name)
 @ddt.ddt
 class DataTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # warnings.simplefilter('ignore',ResourceWarning)
-        print('### 接口测试开始 ###')
         sql_data = ExcelUtil(path, sheetName='初始化').next()
+        print('### 接口测试开始 ,向数据库中加载测试数据###')
         for i in sql_data:
             insert_sql=i['Insert_sql']
             insert_result = MysqlHelper().insert(sql=insert_sql)
@@ -20,12 +21,12 @@ class DataTest(unittest.TestCase):
                 print('Insert Success  -->> %s'% (insert_sql))
             else:
                 print('Insert Fail -->> %s'% (insert_sql))
-        print('### 接口测试开始 ###')
-        time.sleep(1)
+        print('### 数据加载完成 ###')
 
     @classmethod
     def tearDownClass(cls):
         sql_data2 = ExcelUtil(path, sheetName='初始化').next()
+        print('### 接口测试结束，清理测试数据 ###')
         for j in sql_data2:
             delete_sql=j['Delete_sql']
             delete_result = MysqlHelper().delete(sql=delete_sql)
@@ -33,11 +34,10 @@ class DataTest(unittest.TestCase):
                 print('Delete Success  -->> %s'% (delete_sql))
             else:
                 print('Delete Fail -->> %s'% (delete_sql))
-        print('### 接口测试结束 ###')
-
+        print('### 清理完成 ###')
     @ddt.data(*excel.next())
 
-    def test01(self,data):
+    def test_TC(self,data):
         body_data = {}  # 每次遍历后将字典置为空
         ReqMethod = data['请求方式']
         url2 = data['接口地址']
@@ -133,8 +133,7 @@ if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(DataTest)
     #时间维度生成报告
     #now=time.strftime("%m_%d_%H_%M)", time.localtime())
-    now = time.strftime("%m_%d_%H)", time.localtime())
-    print(now)
+    now = time.strftime("%Y-%m-%d)", time.localtime())
     report_name="TestReport("+now+".html"
     file_name = "G:\LocalGit\github\QiuW\API_Test\Test_Report\%s"%(report_name)
 

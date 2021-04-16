@@ -1,5 +1,7 @@
 # coding=utf-8
 import unittest
+
+from API_Test.Get_TestCase.read_excel import ExcelUtil
 from API_Test.HwTestReport.HwTestReport import HTMLTestReport
 import time
 import os
@@ -28,9 +30,14 @@ def send_email(newfile):
         smtpserver = 'smtp.163.com'
         user = '13628165081'
         password='AXZFPNMGEGVHFKWY' #授权码
-        #发送邮箱
-        sender='13628165081@163.com'
-        receiver=['13628165081@163.com']
+        #发送&接收邮箱
+        path = os.path.abspath('./Test_Case/ApiCase.xlsx')
+        email_list = ExcelUtil(path, sheetName="execute").next()[0]
+        sender = email_list['email_sender']
+        receiver = email_list['email_receiver'].split('\n')
+
+        # sender='13628165081@163.com'
+        # receiver=['13628165081@163.com']
         #发送邮件主题
         subject = '接口自动化测试报告'
 

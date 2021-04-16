@@ -43,11 +43,14 @@ class ExcelUtil(object):
 
 if __name__ == '__main__':
     path = os.path.abspath('./Test_Case/ApiCase.xlsx')
-    excel = ExcelUtil(path, sheetName="调试")
-    data = excel.next()
-    print(data)
-    print(data['加载测试数据'])
-    print(type(data))
+    email_list = ExcelUtil(path, sheetName="execute").next()[0]
+    sender=email_list['email_sender']
+    receiver=email_list['email_receiver'].split('\n')
+
+    print(sender)
+    print(receiver)
+
+
 
 
 
