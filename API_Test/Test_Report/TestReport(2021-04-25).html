@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>测试报告</title>
+    <title>接口测试报告</title>
     <meta name="generator" content="HTMLTestRunner 0.1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
@@ -307,17 +307,17 @@ a.popup_link:hover {
     <div id="div_base">
         
     <div class='page-header'>
-        <h1>测试报告
+        <h1>接口测试报告
         </h1>
         <div style="float:left;width:50%;">
             <p class='parameters'> <p class='attribute'><strong>测试人员:</strong> Qiu Wei</p>
-<p class='attribute'><strong>开始时间:</strong> 2021-04-16 09:31:52</p>
-<p class='attribute'><strong>运行时长:</strong> 0:00:00.017275</p>
-<p class='attribute'><strong>测试结果:</strong> 共 1  错误 1  通过率:0.0%</p>
+<p class='attribute'><strong>开始时间:</strong> 2021-04-25 21:05:46</p>
+<p class='attribute'><strong>运行时长:</strong> 0:00:16.751349</p>
+<p class='attribute'><strong>测试结果:</strong> 共 3  通过 3  通过率:100.0%</p>
 </p>
             <br>
             <br>
-            <p class='description'> 用例执行情况，结果详见html附件</p>
+            <p class='description'> </p>
         </div>
         <div id="chart" style="float:left;width:50%;height:250px;"></di>
     </div>
@@ -350,44 +350,90 @@ a.popup_link:hover {
     <td>查看</td>
 </tr>
 
-<tr class='errorClass'>
-    <td>unittest.loader._FailedTest</td>
-    <td>1</td>
+<tr class='passClass'>
+    <td>DataTest</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
-    <td><a href="javascript:showClassDetail('c1',1)">详情</a></td>
+    <td><a href="javascript:showClassDetail('c1',3)">详情</a></td>
 </tr>
 
-<tr id='et1_1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_data</div></td>
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_TC_1: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et1_1')" >
-        错误</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1_1')" >
+        通过</a>
 
-    <div id='div_et1_1' class="popup_window">
+    <div id='div_pt1_1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_et1_1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1_1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-et1_1: ImportError: Failed to import test module: test_data
-Traceback (most recent call last):
-  File "D:\软件\Python\Python38\lib\unittest\loader.py", line 436, in _find_test_path
-    module = self._get_module_from_name(name)
-  File "D:\软件\Python\Python38\lib\unittest\loader.py", line 377, in _get_module_from_name
-    __import__(name)
-  File "G:\LocalGit\github\QiuW\API_Test\test\test_data.py", line 8, in &lt;module&gt;
-    execute_sheet_name = ExcelUtil(path, sheetName="execute").next()[0]['execute_sheet']
-  File "G:\LocalGit\github\QiuW\API_Test\Get_TestCase\read_excel.py", line 9, in __init__
-    self.data = xlrd.open_workbook(excelPath)
-  File "D:\软件\Python\Python38\lib\site-packages\xlrd\__init__.py", line 111, in open_workbook
-    with open(filename, "rb") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'G:\\LocalGit\\github\\QiuW\\API_Test\\send_report\\Test_Case\\ApiCase.xlsx'
+pt1_1: 
+Case_Item -----&gt;&gt;: 加载所有常用地址
+Request_URL ---&gt;&gt;: /client/missionSite/listPage
+Request_Body --&gt;&gt;: {'page': 1, 'size': 10, 'search': ''}
 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_TC_2: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1_2')" >
+        通过</a>
+
+    <div id='div_pt1_2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1_2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1_2: 
+Case_Item -----&gt;&gt;: 加载所有运输类型
+Request_URL ---&gt;&gt;: /operator/tspPolicyType/list
+Request_Body --&gt;&gt;: {'page': 1, 'size': 10}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_TC_3: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1_3')" >
+        通过</a>
+
+    <div id='div_pt1_3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1_3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1_3: 
+Case_Item -----&gt;&gt;: 加载货物品种
+Request_URL ---&gt;&gt;: /client/report/productType/view
+Request_Body --&gt;&gt;: {'companyCode': 'C00001'}
 
 
         </pre>
@@ -399,11 +445,11 @@ FileNotFoundError: [Errno 2] No such file or directory: 'G:\\LocalGit\\github\\Q
 
 <tr id='total_row'>
     <td>总计</td>
-    <td>1</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
-    <td>通过率：0.0%</td>
+    <td>通过率：100.0%</td>
     
 </tr>
 </table>
@@ -448,9 +494,9 @@ FileNotFoundError: [Errno 2] No such file or directory: 'G:\\LocalGit\\github\\Q
                         radius : '60%',
                         center: ['50%', '60%'],
                         data:[
-                            {value:0, name:'通过'},
+                            {value:3, name:'通过'},
                             {value:0, name:'失败'},
-                            {value:1, name:'错误'}
+                            {value:0, name:'错误'}
                         ],
                         itemStyle: {
                             emphasis: {

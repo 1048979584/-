@@ -1473,7 +1473,7 @@ class HTMLTestReport(Template_CN):
         if python3:
             sys.stderr.write('\nTime Elapsed: %s\n' % (self.stopTime - self.startTime))
         else:
-            print >>sys.stderr, u'\nTime Elapsed: %s' % (self.stopTime-self.startTime)
+            print (sys.stderr, u'\nTime Elapsed: %s' % (self.stopTime-self.startTime))
         return result
 
 

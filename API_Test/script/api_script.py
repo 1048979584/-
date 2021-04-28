@@ -36,9 +36,6 @@ class CaseScript:
     "authorization":"bearer 6736b2e6-8712-46fe-992a-35673dca61ea",
     "referer":"https://test-web.wind56.com/"}
             )
-        print()
-        print('request_data -->>： ',data)
-        print('response_data-->>： ',json.loads(post_result.content))
         return post_result.status_code , post_result.text
     def delete_api(self, url, data):
         pass
@@ -48,7 +45,7 @@ class CaseScript:
         try:
             var_dict = json.loads(var_set)
             var_dict_keys = list(var_dict.keys()) #获取所有的变量名
-            for i in var_dict_keys:   #每个变量赋值
+            for i in var_dict_keys:   #给每个变量赋值
                 var_value = var_dict[i]
                 # var_value = MysqlHelper().get_all(sql=var_value)[0][0]
                 execute_sql_result = MysqlHelper().get_all(sql=var_value)
@@ -80,9 +77,6 @@ class CaseScript:
             return assert_sql_dict
         except Exception as e:
             print(e)
-
-
-
 
 if __name__ == '__main__':
     # CaseScript().get_api(url='https://www.baidu.com/')
